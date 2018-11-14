@@ -14,9 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#ffffff"
+        android:elevation="2dp"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Light">
+        app:theme="@style/ThemeOverlay.AppCompat.Light"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="2dp"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -29,6 +33,30 @@
             android:textStyle="bold"
             tools:layout_editor_absoluteX="164dp"
             tools:layout_editor_absoluteY="15dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/background_light"
+            android:tint="@android:color/background_dark"
+            app:srcCompat="@drawable/ic_setting_black"
+            tools:layout_editor_absoluteX="88dp"
+            tools:layout_editor_absoluteY="128dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/background_light"
+            android:tint="@android:color/background_dark"
+            app:srcCompat="@drawable/ic_backbotton"
+            tools:layout_editor_absoluteX="103dp"
+            tools:layout_editor_absoluteY="265dp" />
+
+
 
     </android.support.v7.widget.Toolbar>
 
@@ -50,12 +78,15 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:background="?android:attr/windowBackground"
+        app:itemIconTint="#000000"
+        app:itemTextColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:itemIconTint="#000000"
-        app:itemTextColor="#000000"
         app:menu="@menu/navigation" />
+
+
+
     <!-- itemIconTint : 아이콘 색 변경, itemTextColor : 아이콘 텍스트 색 변경 -->
 
 </android.support.constraint.ConstraintLayout>
