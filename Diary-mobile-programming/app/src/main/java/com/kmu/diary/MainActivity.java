@@ -9,36 +9,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;  //버전 맞춰서 import
+import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import com.kmu.diary.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
-
     Toolbar toolbar;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        // 화면에 글자 띄워줌 (하단바 말고 주화면에)
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_calendar:
-                    mTextMessage.setText(R.string.title_calendar);
-                    return true;
-                case R.id.navigation_search:
-                    mTextMessage.setText(R.string.title_search);
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +27,35 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(bottomNavSelectedListener);
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        // 화면에 글자 띄워줌 (하단바 말고 주화면에)
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            Fragment selectedFragment = null;
+
+            switch (item.getItemId()) {
+                case R.id.navigation_calendar:
+                    selectedFragment = new calendarFragment();
+                    break;
+                case R.id.navigation_home:
+                    selectedFragment = new homeFragment();
+                    break;
+                case R.id.navigation_search:
+                    selectedFragment = new searchFragment();
+                    break;
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
+            return true;
+        }
+    };
 
 
 }
