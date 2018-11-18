@@ -17,6 +17,7 @@ import com.kmu.diary.R;
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    Fragment selectedFragment = new homeFragment();
 
 
     @Override
@@ -27,8 +28,12 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(bottomNavSelectedListener);
+
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavSelectedListener
@@ -38,14 +43,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            Fragment selectedFragment = null;
 
             switch (item.getItemId()) {
-                case R.id.navigation_calendar:
-                    selectedFragment = new calendarFragment();
-                    break;
                 case R.id.navigation_home:
                     selectedFragment = new homeFragment();
+                    break;
+                case R.id.navigation_calendar:
+                    selectedFragment = new calendarFragment();
                     break;
                 case R.id.navigation_search:
                     selectedFragment = new searchFragment();

@@ -3,5 +3,8 @@
     <color name="colorPrimary">#FFFFFF</color>         //타이틀바
     <color name="colorPrimaryDark">#ff000000</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorBlack">#FF000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#FFC0C0C0</color>
 
 </resources>
