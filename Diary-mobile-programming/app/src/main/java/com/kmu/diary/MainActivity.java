@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu,menu);
+
+        return true;
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
