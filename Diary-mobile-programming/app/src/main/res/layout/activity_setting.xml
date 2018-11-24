@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".settingActivity">
+
+    <android.support.v7.widget.SwitchCompat
+    android:id="@+id/switch_1"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="Option1"/>
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/switch_2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Option2"/>
+
+
+</LinearLayout>
