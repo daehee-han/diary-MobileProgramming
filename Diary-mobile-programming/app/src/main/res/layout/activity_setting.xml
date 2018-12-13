@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="D I A R Y"
+            android:text="S E T T I N G"
             android:textColor="#ff000000"
             android:textSize="30sp"
             android:textStyle="bold"
