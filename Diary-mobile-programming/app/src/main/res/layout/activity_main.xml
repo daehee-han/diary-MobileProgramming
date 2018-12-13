@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
@@ -12,7 +13,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="69dp"
         android:background="#ffffff"
         android:elevation="2dp"
         android:minHeight="?attr/actionBarSize"
@@ -40,8 +41,9 @@
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="444dp"
-        android:layout_above="@id/navigation"
+        android:layout_height="540dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
