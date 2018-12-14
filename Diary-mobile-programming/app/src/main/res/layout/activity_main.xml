@@ -82,6 +82,7 @@
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginTop="69dp"
         android:background="@color/colorWhite"
         app:itemIconTint="@color/nav_item_colors"
         app:itemTextColor="@color/nav_item_colors"

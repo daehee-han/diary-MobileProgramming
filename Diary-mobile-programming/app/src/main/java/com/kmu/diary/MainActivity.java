@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     Fragment selectedFragment = new homeFragment();
     DrawerLayout side_navigation;
+    BottomNavigationView bottom_navigation;
     ActionBarDrawerToggle toggle;
 
 
@@ -44,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(bottomNavSelectedListener);
+        bottom_navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        bottom_navigation.setOnNavigationItemSelectedListener(bottomNavSelectedListener);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // bottom_navigation selected 이벤트를 처리해주는 함수
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
