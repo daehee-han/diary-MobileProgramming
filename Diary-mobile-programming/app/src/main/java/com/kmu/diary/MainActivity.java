@@ -37,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
         side_navigation = (DrawerLayout) findViewById(R.id.main_drawer);
 
         toggle = new ActionBarDrawerToggle(this,side_navigation,R.string.open, R.string.close);
+        side_navigation.addDrawerListener(toggle);
 
         toggle.syncState();
 
-           // 메뉴 버튼
+        // 메뉴 버튼
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     };
+
 
 
 }
