@@ -39,16 +39,16 @@
 
 
     <android.support.v7.widget.SwitchCompat
-    android:id="@+id/switch_1"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:text="Option1"/>
+        android:id="@+id/switch_1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="앱 잠금" />
 
     <android.support.v7.widget.SwitchCompat
         android:id="@+id/switch_2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Option2"/>
+        android:text="화이트버전" />
 
 
 </LinearLayout>

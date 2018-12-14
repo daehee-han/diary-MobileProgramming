@@ -39,7 +39,7 @@ public class settingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 stateSwitch1 = !stateSwitch1;
-                switch_1.setChecked(stateSwitch1);
+                switch_1.setChecked(stateSwitch1); // 클릭 되었으니까 반대로
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putBoolean("switch1", stateSwitch1);
                 editor.apply();
