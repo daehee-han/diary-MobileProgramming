@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     Fragment selectedFragment = new homeFragment();
+    DrawerLayout side_navigation;
+    ActionBarDrawerToggle toggle;
 
 
     @Override
@@ -29,10 +33,14 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        // 메뉴 버튼
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+        side_navigation = (DrawerLayout) findViewById(R.id.main_drawer);
 
+        toggle = new ActionBarDrawerToggle(this,side_navigation,R.string.open, R.string.close);
+
+        toggle.syncState();
+
+           // 메뉴 버튼
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
@@ -50,18 +58,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
-        switch (item.getItemId()) {
-            case R.id.action_setting:
-                // User chose the "Settings" item, show the app settings UI...
-                Intent intent = new Intent(getApplicationContext(), settingActivity.class);
-                startActivity(intent);
-                return true;
 
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                Toast.makeText(getApplicationContext(), "나머지 버튼 클릭됨", Toast.LENGTH_LONG).show();
-                return super.onOptionsItemSelected(item);
+        if(item.getItemId() == R.id.action_setting){
+            // User chose the "Settings" item, show the app settings UI...
+            Intent intent = new Intent(getApplicationContext(), settingActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        else if(toggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        else{
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            Toast.makeText(getApplicationContext(), "나머지 버튼 클릭됨", Toast.LENGTH_LONG).show();
+            return super.onOptionsItemSelected(item);
 
         }
     }
