@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,12 +19,15 @@ import android.widget.Toast;
 
 import com.kmu.diary.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     Toolbar toolbar;
     Fragment selectedFragment = new homeFragment();
-    DrawerLayout side_navigation;
+    DrawerLayout side_drawer;
     BottomNavigationView bottom_navigation;
+
+    NavigationView side_navigation;
+
     ActionBarDrawerToggle toggle;
 
 
@@ -34,20 +39,51 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        side_navigation = (DrawerLayout) findViewById(R.id.main_drawer);
-
-        toggle = new ActionBarDrawerToggle(this,side_navigation,R.string.open, R.string.close);
-        side_navigation.addDrawerListener(toggle);
-
-        toggle.syncState();
+        side_drawer = (DrawerLayout) findViewById(R.id.main_drawer);
 
         // 메뉴 버튼
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
+
+        toggle = new ActionBarDrawerToggle(this,side_drawer,R.string.open, R.string.close);
+        side_drawer.addDrawerListener(toggle);
+
+
+
+
+        toggle.syncState();
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
-        bottom_navigation = (BottomNavigationView) findViewById(R.id.navigation);
+
+
+        bottom_navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottom_navigation.setOnNavigationItemSelectedListener(bottomNavSelectedListener);
+
+        side_navigation = (NavigationView) findViewById(R.id.side_navigation);
+        side_navigation.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.navigation_schedule:
+                selectedFragment = new scheduleFragment();
+                break;
+            case R.id.navigation_todo:
+                selectedFragment = new todoFragment();
+                break;
+            case R.id.navigation_diary:
+                selectedFragment = new diaryFragment();
+                break;
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+        side_drawer.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -87,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     selectedFragment = new homeFragment();
@@ -104,7 +139,5 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     };
-
-
 
 }
