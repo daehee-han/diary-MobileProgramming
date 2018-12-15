@@ -30,6 +30,7 @@
         <activity android:name=".CreatePasswordActivity" />
         <activity android:name=".EnterPasswordActivity" />
         <activity android:name=".settingActivity"></activity>
+        <activity android:name=".ListDataActivity"></activity>
     </application>
 
 </manifest>

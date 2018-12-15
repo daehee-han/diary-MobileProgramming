@@ -80,9 +80,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 selectedFragment = new diaryFragment();
                 break;
         }
-        side_drawer.closeDrawer(GravityCompat.START);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-
+        side_drawer.closeDrawer(GravityCompat.START);
 
         return true;
     }
