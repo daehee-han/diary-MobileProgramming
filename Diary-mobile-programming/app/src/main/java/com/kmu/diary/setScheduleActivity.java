@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import android.database.Cursor;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +29,10 @@ public class setScheduleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_schedule);
         date = (TextView) findViewById(R.id.editTextDate);
         content = (TextView) findViewById(R.id.editTextContent);
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.schedule_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mydb = new DB_schedule(this);
 
@@ -102,5 +108,17 @@ public class setScheduleActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    // 뒤로가기 버튼 동작
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
