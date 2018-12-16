@@ -31,6 +31,7 @@
         <activity android:name=".EnterPasswordActivity" />
         <activity android:name=".settingActivity"></activity>
         <activity android:name=".MemoListActivity"></activity>
+        <activity android:name=".setScheduleActivity"></activity>
     </application>
 
 </manifest>

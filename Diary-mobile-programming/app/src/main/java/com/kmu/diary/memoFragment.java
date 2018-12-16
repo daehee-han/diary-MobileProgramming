@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class memoFragment extends Fragment {
 
     private static final String TAG = "memoFragment";
-    DatabaseHelper mDatabaseHelper;
+    DB_memo mDatabaseHelper;
     private Button btnAdd, btnViewData;
     private EditText editText;
     View v;
@@ -33,7 +33,7 @@ public class memoFragment extends Fragment {
         editText = (EditText) v.findViewById(R.id.editText);
         btnAdd = (Button) v.findViewById(R.id.btnAdd);
         btnViewData = (Button) v.findViewById(R.id.btnView);
-        mDatabaseHelper = new DatabaseHelper(getActivity());
+        mDatabaseHelper = new DB_memo(getActivity());
 
 
 

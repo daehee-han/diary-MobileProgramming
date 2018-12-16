@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DB_memo extends SQLiteOpenHelper {
 
     private static final String TAG = "DatabaseHelper";
 
@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    public DatabaseHelper(Context context){
+    public DB_memo(Context context){
         super(context, TABLE_NAME, null, 1);
     }
 

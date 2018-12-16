@@ -18,7 +18,7 @@ public class MemoListActivity extends AppCompatActivity {
 
     private  static final  String TAG = "ListDataActivity";
 
-    DatabaseHelper mDatabaseHelper;
+    DB_memo mDatabaseHelper;
 
     private ListView mListView;
 
@@ -28,7 +28,7 @@ public class MemoListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_memolist);
 
         mListView = (ListView) findViewById(R.id.listView);
-        mDatabaseHelper = new DatabaseHelper(this);
+        mDatabaseHelper = new DB_memo(this);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.memo_toolbar);
         setSupportActionBar(mToolbar);
