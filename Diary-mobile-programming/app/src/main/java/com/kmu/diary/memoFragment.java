@@ -1,5 +1,6 @@
 package com.kmu.diary;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -45,7 +46,7 @@ public class memoFragment extends Fragment {
                     AddData(newEntry);
                     editText.setText("");
                 }else{
-                    Toast.makeText(getActivity(),"You must put somthing in the text field!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"메모를 입력하세요 !", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -55,7 +56,7 @@ public class memoFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), ListDataActivity.class);
+                Intent intent = new Intent(getActivity(), MemoListActivity.class);
                 startActivity(intent);
 
             }
@@ -69,9 +70,9 @@ public class memoFragment extends Fragment {
         boolean insertData = mDatabaseHelper.addData(newEntry);
 
         if(insertData){
-            Toast.makeText(getActivity(),"Data Successfully Inserted!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"메모 저장 완료 ! ", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(getActivity(),"Someting went wrong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"메모 저장 실패 .. ", Toast.LENGTH_SHORT).show();
 
         }
     }
