@@ -35,8 +35,8 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="75dp"
         android:background="@color/colorBlack"
-        android:text="V I E W"
         android:textColor="@color/colorWhite"
+        android:text="V I E W"
         android:textSize="15sp"
         android:textStyle="bold" />
 </RelativeLayout>

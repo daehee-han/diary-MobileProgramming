@@ -83,6 +83,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:nestedScrollingEnabled="true"
+            android:background="@color/colorBlack"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
             android:onClick="insert"
             android:text="save" />
 
@@ -111,6 +114,9 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:nestedScrollingEnabled="false"
+            android:background="@color/colorBlack"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
             android:onClick="edit"
             android:text="UPDATE" />
 
@@ -122,6 +128,9 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:nestedScrollingEnabled="true"
+            android:background="@color/colorBlack"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
             android:onClick="delete"
             android:text="DELETE" />
 
