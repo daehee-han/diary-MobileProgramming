@@ -79,6 +79,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.navigation_diary:
                 selectedFragment = new diaryFragment();
                 break;
+            case R.id.navigation_memo:
+                selectedFragment = new memoFragment();
+                break;
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
         side_drawer.closeDrawer(GravityCompat.START);

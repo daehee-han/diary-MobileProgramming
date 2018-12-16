@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/navigation_schedule"
+    <item
+        android:id="@+id/navigation_schedule"
         android:title = "Schedule"/>
     <item
-    android:id="@+id/navigation_todo"
-    android:title="To Do" />
-    <item android:id="@+id/navigation_diary"
-    android:title = "diary"/>
+        android:id="@+id/navigation_todo"
+        android:title="To Do" />
+
+    <item
+        android:id="@+id/navigation_diary"
+        android:title = "diary"/>
+
+    <item
+        android:id="@+id/navigation_memo"
+        android:title = "memo"/>
+
 </menu>
 
 
