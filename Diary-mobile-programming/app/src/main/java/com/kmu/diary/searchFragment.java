@@ -10,11 +10,16 @@ package com.kmu.diary;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
+        import android.widget.ArrayAdapter;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.ListAdapter;
+        import android.widget.ListView;
         import android.widget.TextView;
 
         import org.w3c.dom.Text;
+
+        import java.util.ArrayList;
 
 public class searchFragment extends Fragment {
 
@@ -31,8 +36,11 @@ public class searchFragment extends Fragment {
 
     Button button;
 
-    TextView textView_schedule;
-    TextView textView_todo;
+//    TextView textView_schedule;
+//    TextView textView_todo;
+
+    ListView ListViewSchedule;
+    ListView ListViewTodo;
 
     @Nullable
     @Override
@@ -49,8 +57,11 @@ public class searchFragment extends Fragment {
         editText = (EditText) v.findViewById(R.id.editText);
         button = (Button) v.findViewById(R.id.button);
 
-        textView_schedule = (TextView) v.findViewById(R.id.textView_schedule);
-        textView_todo = (TextView) v.findViewById(R.id.textView_todo);
+        ListViewSchedule = (ListView) v.findViewById(R.id.listViewSchedule);
+        ListViewTodo = (ListView) v.findViewById(R.id.listViewToDo);
+
+//        textView_schedule = (TextView) v.findViewById(R.id.textView_schedule);
+//        textView_todo = (TextView) v.findViewById(R.id.textView_todo);
 
 
         button.setOnClickListener(new View.OnClickListener(){
@@ -63,21 +74,34 @@ public class searchFragment extends Fragment {
                 cursor1 = db1.rawQuery("SELECT date, content FROM schedule WHERE date='"
                         + date + "';", null);
 
+                ArrayList<String> listSchedule = new ArrayList<>();
+
                 Cursor cursor2;
                 cursor2 = db2.rawQuery("SELECT date, content FROM todo WHERE date='"
                         + date + "';", null);
 
+                ArrayList<String> listToDo = new ArrayList<>();
+
                 while (cursor1.moveToNext()) {
-                    textView_schedule.setText("");
-                    String content1 = cursor1.getString(1);
-                    textView_schedule.setText(content1);
+//                    String content1 = cursor1.getString(1);
+//                    textView_schedule.setText(content1);
+
+                    listSchedule.add(cursor1.getString(1));
                 }
 
                 while (cursor2.moveToNext()) {
-                    textView_todo.setText("");
-                    String content2 = cursor2.getString(1);
-                    textView_todo.setText(content2);
+//                    textView_todo.setText("");
+////                    String content2 = cursor2.getString(1);
+////                    textView_todo.setText(content2);
+                    listToDo.add(cursor2.getString(1));
                 }
+
+                //create the list adapter and set the adapter
+                ListAdapter adapter1 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,listSchedule);
+                ListViewSchedule.setAdapter(adapter1);
+
+                ListAdapter adapter2 = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,listToDo);
+                ListViewTodo.setAdapter(adapter2);
 
 
             }
