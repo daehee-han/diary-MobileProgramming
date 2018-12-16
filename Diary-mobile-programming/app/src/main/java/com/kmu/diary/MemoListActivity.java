@@ -30,6 +30,10 @@ public class MemoListActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.listView);
         mDatabaseHelper = new DatabaseHelper(this);
 
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.memo_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //뒤로가기 버튼 추
+
         populateListView();
     }
 
@@ -54,5 +58,15 @@ public class MemoListActivity extends AppCompatActivity {
         mListView.setAdapter(adapter);
     }
 
-
+    // 뒤로가기 버튼 동작
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
