@@ -43,8 +43,6 @@ public class setScheduleActivity extends AppCompatActivity {
                     rs.close();
                 }
 
-
-                ////////
                 Button b = (Button) findViewById(R.id.button1);
                 b.setVisibility(View.INVISIBLE);
 

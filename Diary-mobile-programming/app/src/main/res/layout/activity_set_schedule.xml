@@ -60,10 +60,10 @@
             android:id="@+id/editTextContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="82dp"
             android:layout_below="@+id/editTextDate"
+            android:layout_marginLeft="82dp"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="text" />
 
         <Button
             android:id="@+id/button2"

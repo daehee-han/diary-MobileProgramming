@@ -49,7 +49,7 @@ public class scheduleFragment extends Fragment {
 
 
                 String item = (String) ((ListView) parent).getItemAtPosition(position);
-                String[] strArray = item.split(" ");
+                String[] strArray = item.split(". ");
                 int id=Integer.parseInt(strArray[0]);
                 Bundle dataBundle = new Bundle();
                 dataBundle.putInt("id", id);
@@ -76,7 +76,6 @@ public class scheduleFragment extends Fragment {
         });
 
         return v;
-
     }
 
     @Override
@@ -86,5 +85,5 @@ public class scheduleFragment extends Fragment {
         mAdapter.addAll(mydb.getAllMovies());
         mAdapter.notifyDataSetChanged();
     }
-    
+
 }
