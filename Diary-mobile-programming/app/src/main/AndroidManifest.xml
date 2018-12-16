@@ -32,6 +32,7 @@
         <activity android:name=".settingActivity"></activity>
         <activity android:name=".MemoListActivity"></activity>
         <activity android:name=".setScheduleActivity"></activity>
+        <activity android:name=".setToDoActivity"></activity>
     </application>
 
 </manifest>

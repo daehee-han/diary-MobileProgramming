@@ -9,28 +9,28 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
-public class DB_schedule extends SQLiteOpenHelper {
+public class DB_todo extends SQLiteOpenHelper {
 
-    public static final String SCHEDULE_TABLE_NAME = "schedule";
-    public static final String SCHEDULE_COLUMN_ID = "id";
-    public static final String SCHEDULE_COLUMN_DATE = "date";
-    public static final String SCHEDULE_COLUMN_CONTENT = "content";
+    public static final String TODO_TABLE_NAME = "todo";
+    public static final String TODO_COLUMN_ID = "id";
+    public static final String TODO_COLUMN_DATE = "date";
+    public static final String TODO_COLUMN_CONTENT = "content";
 
-    public DB_schedule(Context context) {
-        super(context, SCHEDULE_TABLE_NAME, null, 1);
+    public DB_todo(Context context) {
+        super(context, TODO_TABLE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
-                "create table schedule " +
+                "create table todo " +
                         "(id integer primary key,date text, content text)"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS schedule");
+        db.execSQL("DROP TABLE IF EXISTS todo");
         onCreate(db);
     }
 
@@ -41,19 +41,19 @@ public class DB_schedule extends SQLiteOpenHelper {
         contentValues.put("date", date);
         contentValues.put("content", content);
 
-        db.insert("schedule", null, contentValues);
+        db.insert("todo", null, contentValues);
         return true;
     }
 
     public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from schedule where id=" + id + "", null);
+        Cursor res = db.rawQuery("select * from todo where id=" + id + "", null);
         return res;
     }
 
     public int numberOfRows() {
         SQLiteDatabase db = this.getReadableDatabase();
-        int numRows = (int) DatabaseUtils.queryNumEntries(db, SCHEDULE_TABLE_NAME);
+        int numRows = (int) DatabaseUtils.queryNumEntries(db, TODO_TABLE_NAME);
         return numRows;
     }
 
@@ -62,13 +62,13 @@ public class DB_schedule extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put("date", date);
         contentValues.put("content", content);
-        db.update("schedule", contentValues, "id = ? ", new String[]{Integer.toString(id)});
+        db.update("todo", contentValues, "id = ? ", new String[]{Integer.toString(id)});
         return true;
     }
 
     public Integer deleteMovie(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete("schedule",
+        return db.delete("todo",
                 "id = ? ",
                 new String[]{Integer.toString(id)});
     }
@@ -76,11 +76,11 @@ public class DB_schedule extends SQLiteOpenHelper {
     public ArrayList getAllMovies() {
         ArrayList array_list = new ArrayList();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from schedule", null);
+        Cursor res = db.rawQuery("select * from todo", null);
         res.moveToFirst();
         while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(SCHEDULE_COLUMN_ID))+". "+res.getString(res.getColumnIndex(SCHEDULE_COLUMN_DATE))+": "+
-                    res.getString(res.getColumnIndex(SCHEDULE_COLUMN_CONTENT)));
+            array_list.add(res.getString(res.getColumnIndex(TODO_COLUMN_ID))+". "+res.getString(res.getColumnIndex(TODO_COLUMN_DATE))+": "+
+                    res.getString(res.getColumnIndex(TODO_COLUMN_CONTENT)));
             res.moveToNext();
         }
         return array_list;

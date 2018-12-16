@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".settingActivity">
+    tools:context=".setToDoActivity">
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/schedule_toolbar"
+        android:id="@+id/todo_toolbar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#ffffff"
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="S C H E D U L E"
+            android:text="T O D O"
             android:textColor="#ff000000"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -43,7 +43,7 @@
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".setScheduleActivity">
+    tools:context=".setToDoActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/editTextDate"
             android:layout_alignParentLeft="true"
-            android:text="날짜"
+            android:text="Date"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Button
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/editTextContent"
             android:layout_alignLeft="@+id/textView1"
-            android:text="일정"
+            android:text="To Do"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
