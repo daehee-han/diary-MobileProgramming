@@ -22,8 +22,8 @@ public class setToDoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_todo);
-        date = (TextView) findViewById(R.id.editTextDate);
-        content = (TextView) findViewById(R.id.editTextContent);
+        date = (TextView) findViewById(R.id.editTextTitle);
+        content = (TextView) findViewById(R.id.editTextDate);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.todo_toolbar);
         setSupportActionBar(mToolbar);

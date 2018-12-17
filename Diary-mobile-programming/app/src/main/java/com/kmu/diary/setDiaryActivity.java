@@ -1,8 +1,9 @@
 package com.kmu.diary;
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import android.database.Cursor;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,11 +14,9 @@ import android.widget.Toast;
 public class setDiaryActivity extends AppCompatActivity {
 
     private DB_diary mydb;
-
+    TextView title;
     TextView date;
     TextView content;
-    TextView location;
-
     int id = 0;
 
 
@@ -26,9 +25,10 @@ public class setDiaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_diary);
 
+
+        title = (TextView) findViewById(R.id.editTextTitle) ;
         date = (TextView) findViewById(R.id.editTextDate);
         content = (TextView) findViewById(R.id.editTextContent);
-        location = (TextView) findViewById(R.id.editTextLocation);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.diary_toolbar);
         setSupportActionBar(mToolbar);
@@ -43,19 +43,19 @@ public class setDiaryActivity extends AppCompatActivity {
                 Cursor rs = mydb.getData(Value);
                 id = Value;
                 rs.moveToFirst();
+                String t = rs.getString(rs.getColumnIndex(DB_diary.DIARY_COLUMN_TITLE));
                 String d = rs.getString(rs.getColumnIndex(DB_diary.DIARY_COLUMN_DATE));
                 String c = rs.getString(rs.getColumnIndex(DB_diary.DIARY_COLUMN_CONTENT));
-                String l = rs.getString(rs.getColumnIndex(DB_diary.DIARY_COLUMN_LOCATION));
                 if (!rs.isClosed()) {
                     rs.close();
                 }
 
-                Button b = (Button) findViewById(R.id.button1);
+                Button b = (Button) findViewById(R.id.button);
                 b.setVisibility(View.INVISIBLE);
 
+                title.setText((CharSequence) t);
                 date.setText((CharSequence) d);
                 content.setText((CharSequence) c);
-                location.setText((CharSequence) l);
             }
         }
     }
@@ -65,7 +65,7 @@ public class setDiaryActivity extends AppCompatActivity {
         if (extras != null) {
             int Value = extras.getInt("id");
             if (Value > 0) {
-                if (mydb.updateMovie(id, date.getText().toString(), content.getText().toString(), location.getText().toString())) {
+                if (mydb.updateMovie(id, title.getText().toString(), date.getText().toString(), content.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "수정되었음", Toast.LENGTH_SHORT).show();
 //                    Intent intent = new Intent(getApplicationContext(), kr.co.company.moviedatabase.MainActivity.class);
 //                    startActivity(intent);
@@ -73,7 +73,7 @@ public class setDiaryActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "수정되지 않았음", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                if (mydb.insertMovie(date.getText().toString(), content.getText().toString(), location.getText().toString())) {
+                if (mydb.insertMovie(title.getText().toString(), date.getText().toString(), content.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "추가되었음", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "추가되지 않았음", Toast.LENGTH_SHORT).show();
@@ -102,7 +102,7 @@ public class setDiaryActivity extends AppCompatActivity {
         if (extras != null) {
             int value = extras.getInt("id");
             if (value > 0) {
-                if (mydb.updateMovie(id, date.getText().toString(), content.getText().toString(), location.getText().toString())) {
+                if (mydb.updateMovie(id, title.getText().toString(), date.getText().toString(), content.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "수정되었음", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {

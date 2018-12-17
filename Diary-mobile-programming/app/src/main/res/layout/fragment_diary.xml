@@ -7,6 +7,7 @@
     android:layout_marginLeft="15dp">
 
 
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
@@ -28,8 +29,6 @@
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         android:text="일기 추가" />
-
-
 
 
 </LinearLayout>

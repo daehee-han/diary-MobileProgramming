@@ -54,7 +54,7 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
         <EditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/editTextTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -70,7 +70,7 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/editTextDate"
+            android:layout_alignBottom="@+id/editTextTitle"
             android:layout_alignParentLeft="true"
             android:text="Date"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -93,16 +93,16 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/editTextContent"
+            android:layout_alignBottom="@+id/editTextDate"
             android:layout_alignLeft="@+id/textView1"
             android:text="To Do"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/editTextContent"
+            android:id="@+id/editTextDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextDate"
+            android:layout_below="@+id/editTextTitle"
             android:layout_marginLeft="82dp"
             android:ems="10"
             android:inputType="text" />

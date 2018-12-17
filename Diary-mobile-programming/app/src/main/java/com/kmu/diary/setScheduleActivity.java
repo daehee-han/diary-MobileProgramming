@@ -1,10 +1,6 @@
 package com.kmu.diary;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import android.database.Cursor;
@@ -27,8 +23,9 @@ public class setScheduleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_schedule);
-        date = (TextView) findViewById(R.id.editTextDate);
-        content = (TextView) findViewById(R.id.editTextContent);
+
+        date = (TextView) findViewById(R.id.editTextTitle);
+        content = (TextView) findViewById(R.id.editTextDate);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.schedule_toolbar);
         setSupportActionBar(mToolbar);
