@@ -1,5 +1,6 @@
 package com.kmu.diary;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -8,15 +9,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Message;
+import android.os.Handler;
 
 public class setDiaryActivity extends AppCompatActivity {
 
     private DB_diary mydb;
+
+    SeekBar seekBar;
+    Button playbtn;
+    MediaPlayer mp;
     TextView title;
     TextView date;
     TextView content;
+    int totalTime;
     int id = 0;
 
 
@@ -29,6 +38,54 @@ public class setDiaryActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.editTextTitle) ;
         date = (TextView) findViewById(R.id.editTextDate);
         content = (TextView) findViewById(R.id.editTextContent);
+
+        playbtn = (Button) findViewById(R.id.playbtn);
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
+
+        mp = MediaPlayer.create(this,R.raw.music);
+        mp.setLooping(true);
+        mp.seekTo(0);
+        mp.setVolume(0.5f, 0.5f);
+        totalTime = mp.getDuration();
+
+        seekBar.setMax(totalTime);
+        seekBar.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        if(fromUser){
+                            mp.seekTo(progress);
+                            seekBar.setProgress(progress);
+                        }
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+
+                    }
+                }
+
+        );
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(mp != null){
+                    try{
+                        Message msg = new Message();
+                        msg.what = mp.getCurrentPosition();
+                        handler.sendMessage(msg);
+                        Thread.sleep(1000);
+                    }catch (InterruptedException e){}
+                }
+            }
+        }).start();
+
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.diary_toolbar);
         setSupportActionBar(mToolbar);
@@ -59,6 +116,14 @@ public class setDiaryActivity extends AppCompatActivity {
             }
         }
     }
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            int currentPosition = msg.what;
+            seekBar.setProgress(currentPosition);
+        }
+    };
 
     public void insert(View view) {
         Bundle extras = getIntent().getExtras();
@@ -122,5 +187,18 @@ public class setDiaryActivity extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    public void playBtnClick(View v){
+        if(!mp.isPlaying()){
+            mp.start();
+            playbtn.setBackgroundResource(R.drawable.ic_action_stop);
+        }
+        else{
+            mp.pause();
+            playbtn.setBackgroundResource(R.drawable.ic_action_play);
+        }
     }
 }

@@ -79,7 +79,7 @@ public class DB_todo extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from todo", null);
         res.moveToFirst();
         while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(TODO_COLUMN_ID))+". "+res.getString(res.getColumnIndex(TODO_COLUMN_DATE))+": "+
+            array_list.add(res.getString(res.getColumnIndex(TODO_COLUMN_ID))+". Datd: "+res.getString(res.getColumnIndex(TODO_COLUMN_DATE))+"\n    Content: "+
                     res.getString(res.getColumnIndex(TODO_COLUMN_CONTENT)));
             res.moveToNext();
         }

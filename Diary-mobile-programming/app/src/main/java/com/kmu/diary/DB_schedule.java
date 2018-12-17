@@ -79,7 +79,7 @@ public class DB_schedule extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from schedule", null);
         res.moveToFirst();
         while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(SCHEDULE_COLUMN_ID))+". "+res.getString(res.getColumnIndex(SCHEDULE_COLUMN_DATE))+": "+
+            array_list.add(res.getString(res.getColumnIndex(SCHEDULE_COLUMN_ID))+". Date: "+res.getString(res.getColumnIndex(SCHEDULE_COLUMN_DATE))+"\n    Content: "+
                     res.getString(res.getColumnIndex(SCHEDULE_COLUMN_CONTENT)));
             res.moveToNext();
         }

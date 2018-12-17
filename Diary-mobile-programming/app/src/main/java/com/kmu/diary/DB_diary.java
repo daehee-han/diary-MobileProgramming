@@ -82,7 +82,7 @@ public class DB_diary extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from diary", null);
         res.moveToFirst();
         while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(DIARY_COLUMN_ID))+". "+res.getString(res.getColumnIndex(DIARY_COLUMN_DATE))+res.getString(res.getColumnIndex(DIARY_COLUMN_DATE))+": "+
+            array_list.add(res.getString(res.getColumnIndex(DIARY_COLUMN_ID))+". Title : "+res.getString(res.getColumnIndex(DIARY_COLUMN_TITLE))+"\n    Date: "+res.getString(res.getColumnIndex(DIARY_COLUMN_DATE))+"\n    Content: "+
                     res.getString(res.getColumnIndex(DIARY_COLUMN_CONTENT)));
             res.moveToNext();
         }
