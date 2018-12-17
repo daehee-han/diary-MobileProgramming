@@ -111,25 +111,4 @@ public class searchFragment extends Fragment {
         return v;
     }
 
-//    public void search(View v) {
-//        String date = editText.getText().toString();
-//
-//        Cursor cursor1;
-//        cursor1 = db1.rawQuery("SELECT date, content FROM schedule WHERE date='"
-//                + date + "';", null);
-//
-//        Cursor cursor2;
-//        cursor2 = db1.rawQuery("SELECT date, content FROM todo WHERE date='"
-//                + date + "';", null);
-//
-//        while (cursor1.moveToNext()) {
-//            String content1 = cursor1.getString(1);
-//            textView_schedule.setText(content1);
-//        }
-//
-//        while (cursor2.moveToNext()) {
-//            String content2 = cursor2.getString(1);
-//            textView_schedule.setText(content2);
-//        }
-//    }
 }

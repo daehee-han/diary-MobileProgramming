@@ -15,6 +15,7 @@ public class DB_diary extends SQLiteOpenHelper {
     public static final String DIARY_COLUMN_ID = "id";
     public static final String DIARY_COLUMN_DATE = "date";
     public static final String DIARY_COLUMN_CONTENT = "content";
+    public static final String DIARY_COLUMN_LOCATION = "location";
 
     public DB_diary(Context context) {
         super(context, DIARY_TABLE_NAME, null, 1);
@@ -24,7 +25,7 @@ public class DB_diary extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
                 "create table diary " +
-                        "(id integer primary key,date text, content text)"
+                        "(id integer primary key,date text, content text, location text)"
         );
     }
 
@@ -34,12 +35,13 @@ public class DB_diary extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertMovie(String date, String content) {
+    public boolean insertMovie(String date, String content, String location) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put("date", date);
         contentValues.put("content", content);
+        contentValues.put("location", location);
 
         db.insert("diary", null, contentValues);
         return true;
@@ -57,11 +59,12 @@ public class DB_diary extends SQLiteOpenHelper {
         return numRows;
     }
 
-    public boolean updateMovie(Integer id, String date, String content) {
+    public boolean updateMovie(Integer id, String date, String content, String location) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("date", date);
         contentValues.put("content", content);
+        contentValues.put("location", location);
         db.update("diary", contentValues, "id = ? ", new String[]{Integer.toString(id)});
         return true;
     }
@@ -79,8 +82,14 @@ public class DB_diary extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from diary", null);
         res.moveToFirst();
         while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(DIARY_COLUMN_ID))+". "+res.getString(res.getColumnIndex(DIARY_COLUMN_DATE))+": "+
-                    res.getString(res.getColumnIndex(DIARY_COLUMN_CONTENT)));
+//            array_list.add(res.getString(res.getColumnIndex(DIARY_COLUMN_ID))+". Date : "+res.getString(res.getColumnIndex(DIARY_COLUMN_DATE))+"\n"
+//                    + "content: " + res.getString(res.getColumnIndex(DIARY_COLUMN_CONTENT)) + "\n"
+//                    + "location: " + res.getString(res.getColumnIndex(DIARY_COLUMN_LOCATION)) );
+//            array_list.add(res.getString(res.getColumnIndex(DIARY_COLUMN_ID))+". "+res.getString(res.getColumnIndex(DIARY_COLUMN_DATE))+": "+
+//                    res.getString(res.getColumnIndex(DIARY_COLUMN_CONTENT))+ res.getString(res.getColumnIndex(DIARY_COLUMN_LOCATION)));
+
+            array_list.add(res.getString(0)+". "+res.getString(1)+
+                    res.getString(2));
             res.moveToNext();
         }
         return array_list;

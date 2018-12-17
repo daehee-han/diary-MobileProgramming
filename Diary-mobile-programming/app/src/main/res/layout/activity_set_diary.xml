@@ -63,7 +63,7 @@
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/editTextContent5"
+            android:id="@+id/editTextContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editTextDate"
@@ -125,16 +125,6 @@
             android:layout_alignStart="@+id/textView1"
             android:text="일정"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <EditText
-            android:id="@+id/editTextContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextDate"
-            android:layout_marginLeft="82dp"
-            android:ems="10"
-            android:inputType="text" />
-
 
 
         <Button

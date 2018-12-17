@@ -13,8 +13,11 @@ import android.widget.Toast;
 public class setDiaryActivity extends AppCompatActivity {
 
     private DB_diary mydb;
+
     TextView date;
     TextView content;
+    TextView location;
+
     int id = 0;
 
 
@@ -22,8 +25,10 @@ public class setDiaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_diary);
+
         date = (TextView) findViewById(R.id.editTextDate);
         content = (TextView) findViewById(R.id.editTextContent);
+        location = (TextView) findViewById(R.id.editTextLocation);
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.diary_toolbar);
         setSupportActionBar(mToolbar);
@@ -40,6 +45,7 @@ public class setDiaryActivity extends AppCompatActivity {
                 rs.moveToFirst();
                 String d = rs.getString(rs.getColumnIndex(DB_diary.DIARY_COLUMN_DATE));
                 String c = rs.getString(rs.getColumnIndex(DB_diary.DIARY_COLUMN_CONTENT));
+                String l = rs.getString(rs.getColumnIndex(DB_diary.DIARY_COLUMN_LOCATION));
                 if (!rs.isClosed()) {
                     rs.close();
                 }
@@ -49,6 +55,7 @@ public class setDiaryActivity extends AppCompatActivity {
 
                 date.setText((CharSequence) d);
                 content.setText((CharSequence) c);
+                location.setText((CharSequence) l);
             }
         }
     }
@@ -58,7 +65,7 @@ public class setDiaryActivity extends AppCompatActivity {
         if (extras != null) {
             int Value = extras.getInt("id");
             if (Value > 0) {
-                if (mydb.updateMovie(id, date.getText().toString(), content.getText().toString())) {
+                if (mydb.updateMovie(id, date.getText().toString(), content.getText().toString(), location.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "수정되었음", Toast.LENGTH_SHORT).show();
 //                    Intent intent = new Intent(getApplicationContext(), kr.co.company.moviedatabase.MainActivity.class);
 //                    startActivity(intent);
@@ -66,7 +73,7 @@ public class setDiaryActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "수정되지 않았음", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                if (mydb.insertMovie(date.getText().toString(), content.getText().toString())) {
+                if (mydb.insertMovie(date.getText().toString(), content.getText().toString(), location.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "추가되었음", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "추가되지 않았음", Toast.LENGTH_SHORT).show();
@@ -95,7 +102,7 @@ public class setDiaryActivity extends AppCompatActivity {
         if (extras != null) {
             int value = extras.getInt("id");
             if (value > 0) {
-                if (mydb.updateMovie(id, date.getText().toString(), content.getText().toString())) {
+                if (mydb.updateMovie(id, date.getText().toString(), content.getText().toString(), location.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "수정되었음", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
