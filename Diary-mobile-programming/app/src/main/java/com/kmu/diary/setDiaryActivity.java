@@ -3,7 +3,6 @@ package com.kmu.diary;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
 import android.database.Cursor;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;

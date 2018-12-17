@@ -74,16 +74,14 @@ public class homeFragment extends Fragment {
 
 
                 while (cursor1.isAfterLast() == false) {
-
-
-                    listSchedule.add(cursor1.getString(0)+". "+cursor1.getString(1)+": "+
+                    listSchedule.add(cursor1.getString(0)+". Date: "+cursor1.getString(1)+"\n    Content: "+
                             cursor1.getString(2));
                     cursor1.moveToNext();
                 }
 
                 while (cursor2.isAfterLast() == false) {
-                  listToDo.add(cursor2.getString(0)+". "+cursor2.getString(1)+": "+
-                            cursor2.getString(2));
+                  listToDo.add(cursor2.getString(0)+". Date: "+cursor2.getString(1)+"\n    Content: "+
+                          cursor2.getString(2));
                     cursor2.moveToNext();
                 }
 

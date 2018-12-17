@@ -71,29 +71,27 @@ public class searchFragment extends Fragment {
                 String date = editText.getText().toString();
 
                 Cursor cursor1;
-                cursor1 = db1.rawQuery("SELECT date, content FROM schedule WHERE date='"
+                cursor1 = db1.rawQuery("SELECT id, date, content FROM schedule WHERE date='"
                         + date + "';", null);
 
                 ArrayList<String> listSchedule = new ArrayList<>();
 
                 Cursor cursor2;
-                cursor2 = db2.rawQuery("SELECT date, content FROM todo WHERE date='"
+                cursor2 = db2.rawQuery("SELECT id, date, content FROM todo WHERE date='"
                         + date + "';", null);
 
                 ArrayList<String> listToDo = new ArrayList<>();
 
-                while (cursor1.moveToNext()) {
-//                    String content1 = cursor1.getString(1);
-//                    textView_schedule.setText(content1);
 
-                    listSchedule.add(cursor1.getString(1));
+                while (cursor1.moveToNext()) {
+                    listSchedule.add(cursor1.getString(0)+". Date: "+cursor1.getString(1)+"\n    Content: "+
+                            cursor1.getString(2));
                 }
 
                 while (cursor2.moveToNext()) {
-//                    textView_todo.setText("");
-////                    String content2 = cursor2.getString(1);
-////                    textView_todo.setText(content2);
-                    listToDo.add(cursor2.getString(1));
+
+                    listToDo.add(cursor2.getString(0)+". Date: "+cursor2.getString(1)+"\n    Content: "+
+                            cursor2.getString(2));
                 }
 
                 //create the list adapter and set the adapter
