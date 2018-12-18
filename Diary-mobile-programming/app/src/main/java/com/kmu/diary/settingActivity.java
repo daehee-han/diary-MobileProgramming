@@ -25,8 +25,8 @@ public class settingActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);  //뒤로가기 버튼 추
 
         preferences = getSharedPreferences("PREFS", 0);
-        stateSwitch1 = preferences.getBoolean("switch1", false);
-        stateSwitch2 = preferences.getBoolean("switch2", false);
+        stateSwitch1 = preferences.getBoolean("switch1", true);
+        stateSwitch2 = preferences.getBoolean("switch2", true);
 
 
         switch_1 = (SwitchCompat) findViewById(R.id.switch_1);
